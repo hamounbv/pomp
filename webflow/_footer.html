@@ -1,0 +1,29 @@
+<!-- ============================================================
+     Pomp & Circumstance — Site Settings → Custom Code → FOOTER
+     Version-controlled source of truth for the before-</body> block.
+
+     Changes vs the previous footer:
+     - Lenis moved from unpkg to jsDelivr, pinned, and loads with defer
+     - Swiper now loads with defer
+     - four inline scripts (Swiper init, Lenis init, NavShrink, colon-break)
+       moved INTO js/pomp.js
+     Deferred scripts execute in document order, so Swiper and Lenis are
+     always ready before pomp.js initialises them. jQuery and the Webflow
+     runtime are emitted by Webflow earlier in the document and are not
+     deferred, so they are ready first.
+
+     ALSO DELETE, in the Webflow UI: the registered script
+     `colon_break-1.0.0.js` (Site settings → Custom code → registered
+     scripts). It is a second copy of the colon-break logic that already
+     ran inline — pomp.js now owns it.
+     Remember to bump @1.0.0 when you tag a new release.
+     ============================================================ -->
+
+<!-- Swiper -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+
+<!-- Lenis Smooth Scrolling -->
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.5/dist/lenis.min.js" defer></script>
+
+<!-- Site JS (GitHub → jsDelivr, pinned release) -->
+<script src="https://cdn.jsdelivr.net/gh/hamounbv/pomp@1.0.0/js/pomp.min.js" defer></script>

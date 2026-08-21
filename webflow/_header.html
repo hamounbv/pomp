@@ -1,0 +1,280 @@
+<!-- ============================================================
+     Pomp & Circumstance — Site Settings → Custom Code → HEAD
+     Version-controlled source of truth for the head block. Paste its
+     contents into Webflow Site Settings, replacing everything currently
+     between the Start/End markers.
+
+     Changes vs the previous head:
+     - duplicate viewport meta (maximum-scale=1) removed — it disabled
+       pinch-zoom (accessibility fail, flagged by Lighthouse); prevent iOS
+       input zoom with input font-size >= 16px instead
+     - Ahrefs Analytics added
+     - site CSS now loads from the pinned jsDelivr build; the whole
+       `G | Embed Code` component that carried the inline copy gets deleted
+     - `.pre-loader { display: flex }` removed — verified against 10 pages,
+       no element on the site carries that class, so the rule was dead
+     - global JSON-LD added (the site had zero structured data on all 71 pages)
+     - canonical is NOT set here: it must be per-page, see the fix kit
+     Remember to bump @1.0.0 when you tag a new release.
+     ============================================================ -->
+
+<!-- Global | Webflow Head Custom Code | Start -->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MBMGSM1Q2Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+  gtag('config', 'G-MBMGSM1Q2Z');
+</script>
+
+<!-- Ahrefs Analytics -->
+<script src="https://analytics.ahrefs.com/analytics.js" data-key="43nMMp9mHzNNSXe2oyLLXw" async></script>
+
+<!-- Theme Color Browser -->
+<meta name="theme-color" content="#392AE3" />
+
+<!-- Swiper -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+<!-- Finsweet Attributes -->
+<!-- [Attributes by Finsweet] CMS Load -->
+<script async src="https://cdn.jsdelivr.net/npm/@finsweet/attributes-cmsload@1/cmsload.js"></script>
+<!-- [Attributes by Finsweet] Smart Lightbox -->
+<script defer src="https://cdn.jsdelivr.net/npm/@finsweet/attributes-smartlightbox@1/smartlightbox.js"></script>
+
+<!-- Site CSS (GitHub → jsDelivr, pinned release) -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/hamounbv/pomp@1.0.0/css/pomp.min.css" />
+
+<style>
+  /* Hiding Dev Supports */
+  .g-embed-code,
+  /* .g-grid-guide, */
+  .w-webflow-badge,
+  .cms-filter {
+    z-index: -99999 !important;
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
+
+  /* --------- Lenis Smooth Scrolling --------- */
+  html.lenis {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+</style>
+
+<!-- Global Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "AdvertisingAgency",
+      "@id": "https://www.pompandcircumstancepr.com/#organization",
+      "name": "Pomp & Circumstance",
+      "alternateName": "Pomp & Circumstance PR",
+      "description": "Toronto boutique PR and creative agency delivering media relations, influencer relations, experiential marketing, events, content and social, paid media, design, and crisis communications for ambitious brands.",
+      "url": "https://www.pompandcircumstancepr.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://cdn.prod.website-files.com/62a5f6c6cc39b911d78bd5b5/69ee889eea478df4265b6b1c_Webclip.png"
+      },
+      "image": "https://cdn.prod.website-files.com/62a5f6c6cc39b911d78bd5b5/630e609dc3eac43c50eb5013_Digital%20Strategy.jpg",
+      "telephone": "+1-416-977-9797",
+      "email": "info@pomppr.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "292 Adelaide Street West, Suite 401",
+        "addressLocality": "Toronto",
+        "addressRegion": "ON",
+        "postalCode": "M5V 1P6",
+        "addressCountry": "CA"
+      },
+      "areaServed": [
+        {
+          "@type": "Country",
+          "name": "Canada"
+        },
+        {
+          "@type": "City",
+          "name": "Toronto"
+        }
+      ],
+      "knowsAbout": [
+        "Creative",
+        "Media Relations",
+        "Influencer Relations",
+        "Integrated Media",
+        "Corporate Media Relations",
+        "Content & Social",
+        "Events",
+        "Design",
+        "Paid Media",
+        "Experiential Marketing",
+        "Issues & Crisis Management",
+        "Thought Leadership"
+      ],
+      "sameAs": [
+        "REPLACE-WITH-INSTAGRAM-URL",
+        "REPLACE-WITH-LINKEDIN-URL"
+      ],
+      "subOrganization": {
+        "@type": "Organization",
+        "name": "Bonus Track",
+        "url": "https://www.thisisbonustrack.com/"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Public Relations & Creative Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Creative",
+              "provider": {
+                "@id": "https://www.pompandcircumstancepr.com/#organization"
+              }
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Media Relations",
+              "provider": {
+                "@id": "https://www.pompandcircumstancepr.com/#organization"
+              }
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Influencer Relations",
+              "provider": {
+                "@id": "https://www.pompandcircumstancepr.com/#organization"
+              }
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Integrated Media",
+              "provider": {
+                "@id": "https://www.pompandcircumstancepr.com/#organization"
+              }
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Corporate Media Relations",
+              "provider": {
+                "@id": "https://www.pompandcircumstancepr.com/#organization"
+              }
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Content & Social",
+              "provider": {
+                "@id": "https://www.pompandcircumstancepr.com/#organization"
+              }
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Events",
+              "provider": {
+                "@id": "https://www.pompandcircumstancepr.com/#organization"
+              }
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Design",
+              "provider": {
+                "@id": "https://www.pompandcircumstancepr.com/#organization"
+              }
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Paid Media",
+              "provider": {
+                "@id": "https://www.pompandcircumstancepr.com/#organization"
+              }
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Experiential Marketing",
+              "provider": {
+                "@id": "https://www.pompandcircumstancepr.com/#organization"
+              }
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Issues & Crisis Management",
+              "provider": {
+                "@id": "https://www.pompandcircumstancepr.com/#organization"
+              }
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Thought Leadership",
+              "provider": {
+                "@id": "https://www.pompandcircumstancepr.com/#organization"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.pompandcircumstancepr.com/#website",
+      "url": "https://www.pompandcircumstancepr.com/",
+      "name": "Pomp & Circumstance",
+      "publisher": {
+        "@id": "https://www.pompandcircumstancepr.com/#organization"
+      },
+      "inLanguage": "en"
+    }
+  ]
+}
+</script>
+
+<!-- Global | Webflow Head Custom Code | End -->
